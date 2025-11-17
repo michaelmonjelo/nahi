@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nahi | ¿Te casarías conmigo?</title>
+    <style>
+        /* 1. Estilos Generales */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #0d1117; /* Fondo oscuro elegante */
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden; /* Evita barras de desplazamiento */
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* 2. Estilo del Texto (Oculto al inicio) */
+        .proposal-text {
+            font-size: 3.5em; /* Tamaño grande */
+            color: #ff69b4; /* Rosa romántico */
+            white-space: nowrap; /* Mantiene todo en una línea */
+            border-right: 3px solid #ff69b4; /* Simula el cursor de escritura */
+            overflow: hidden; /* Oculta el texto que aún no se ha escrito */
+            margin: 0 auto;
+            max-width: 0; /* Empieza con ancho cero */
+            animation: 
+                typing 4s steps(40, end) forwards, /* Animación de escritura */
+                blink-caret .75s step-end infinite; /* Animación de cursor */
+        }
+
+        /* 3. Animación de Escritura (Keyframes) */
+        @keyframes typing {
+            from { 
+                max-width: 0 
+            }
+            to { 
+                max-width: 100% 
+            } /* Hace que el texto aparezca gradualmente */
+        }
+
+        /* 4. Animación del Cursor (Keyframes) */
+        @keyframes blink-caret {
+            from, to { 
+                border-color: transparent 
+            }
+            50% { 
+                border-color: #ff69b4; 
+            }
+        }
+
+        /* 5. Animación de Palpitar para el Corazón (Aparece al final) */
+        .heart {
+            font-size: 4em;
+            color: red;
+            opacity: 0; /* Oculto al inicio */
+            animation: pulse 1s infinite alternate; /* Animación de palpitar */
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="proposal-text" id="proposalText">
+            ¿Te vas a casar conmigo, Nahiara Antonella?
+        </h1>
+        
+        <div class="heart" id="heart">
+            ❤️
+        </div>
+    </div>
+
+    <script>
+        const textElement = document.getElementById('proposalText');
+        const heartElement = document.getElementById('heart');
+
+        // Duración de la animación de escritura (4s, debe coincidir con el CSS)
+        const typingDuration = 4000; 
+        
+        // Espera a que termine la animación de escritura
+        setTimeout(() => {
+            // 1. Detiene la animación del cursor
+            textElement.style.borderRight = 'none'; 
+            
+            // 2. Hace aparecer el corazón animado
+            heartElement.style.opacity = 1; 
+
+        }, typingDuration + 100); // Pequeño retraso para asegurar que la escritura terminó
+
+    </script>
+
+</body>
+</html>
